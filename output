@@ -1,0 +1,23 @@
+Enter Filled or Unfilled : Filled
+Enter Length: 7
+Do you want to enter another value:(Y?N):N
+Enter Choice 
+Rectangle or upperTriangle or InvertedTriangle or LeftTriangle or RightTriangle or Rhombus : upperTriangle
+      * 
+     * * 
+    * * * 
+   * * * * 
+  * * * * * 
+ * * * * * * 
+* * * * * * *
+Enter Filled or Unfilled : Filled
+Enter Length: 5
+Do you want to enter another value:(Y?N):Y
+Enter Breadth :8
+Enter Choice 
+Rectangle or upperTriangle or InvertedTriangle or LeftTriangle or RightTriangle or Rhombus : Rectangle
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * * 
+* * * * * * * *
