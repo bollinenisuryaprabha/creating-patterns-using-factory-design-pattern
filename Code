@@ -1,0 +1,111 @@
+from abc import ABC,abstractclassmethod
+class IFilled(ABC):
+    def __init__(self,length,breadth):
+        self.length=length
+        self.breadth=breadth
+    def Rectangle(self):
+        if(self.breadth==0):
+            self.breadth=self.length
+        for i in range(self.length):
+            print("* "*self.breadth)
+        print("\n")
+    def upperTriangle(self):
+        for i in range(1,self.length+1):
+            print(" "*(self.length-i)+"* "*i)
+    def InvertedTriangle(self):
+        for i in range(self.length,-1,-1):
+            print(" "*(self.length-i)+"* "*i)
+        print("\n")
+    def LeftTriangle(self):
+        for i in range(1,self.length+1):
+            print("* "*i)
+        print("\n")
+    def RightTriangle(self):
+        for i in range(1,self.length+1):
+            print(" "*2*(self.length-i)+"* "*i)
+        print("\n")
+    def Rhombus(self):
+        if self.length%2==0:
+            self.length=round(self.length/2)+1
+        self.length=round(self.length/2)
+        IFilled.upperTriangle(self)
+        for i in range(self.length-1,-1,-1):
+            print(" "*(self.length-i)+"* "*i)
+        print("\n")
+class IUnfilled(ABC):
+    def __init__(self,length,breadth):
+        self.length=length
+        self.breadth=breadth
+    def Rectangle(self):
+        if(self.breadth==0):
+            self.breadth=self.length
+        print("* "*self.breadth)
+        for i in range(self.length-2):
+            print("* "+" "*2*(self.breadth-2)+"*")
+        print("* "*self.breadth)
+    def upperTriangle(self):
+        j=0
+        for i in range(1,self.length):
+            print(" "*(self.length-i)+"* "+" "*2*(i-2)+"* "*j)
+            j=1
+        print("* "*self.length)
+        print("\n")
+    def InvertedTriangle(self):
+        print("* "*self.length)
+        j=1
+        for i in range(self.length-1,0,-1):
+            if(i==1):
+                j=0
+            print(" "*(self.length-i)+"* "+" "*2*(i-2)+"* "*j)
+        print("\n")
+    def LeftTriangle(self):
+        j=0
+        for i in range(1,self.length):
+            print("* "+" "*2*(i-2)+"* "*j)
+            j=1
+        print("* "*self.length)
+    def RightTriangle(self):
+        j=0
+        for i in range(1,self.length):
+            print(" "*2*(self.length-i)+"* "+" "*2*(i-2)+"*"*j)
+            j=1
+        print("* "*self.length)
+    def Rhombus(self):
+        if self.length%2==0:
+            self.length=round(self.length/2)+1
+        self.length=round(self.length/2)
+        j=0
+        for i in range(1,self.length):
+            print(" "*(self.length-i)+"* "+" "*2*(i-2)+"* "*j)
+            j=1
+        for i in range(self.length-1,0,-1):
+            if(i==1):
+                j=0
+            print(" "*(self.length-i)+"* "+" "*2*(i-2)+"* "*j)
+        print("\n")
+class patterns(IFilled,IUnfilled):
+    @staticmethod
+    def build_triangle(type):
+        a=int(input("Enter Length: "))
+        if(input("Do you want to enter another value:(Y?N):")=='Y'):
+            b=int(input("Enter Breadth :"))
+        else:
+            b=0
+        if type=="Filled":
+            return IFilled(a,b)
+        else:
+            return IUnfilled(a,b)
+    @staticmethod
+    def typeofpattern(type):
+        ty={"Rectangle":choice.Rectangle,
+        "upperTriangle":choice.upperTriangle,
+        "InvertedTriangle":choice.InvertedTriangle,
+        "LeftTriangle":choice.LeftTriangle,
+        "RightTriangle":choice.RightTriangle,
+        "Rhombus":choice.Rhombus
+        }
+        return ty[type]()
+f=input("Enter Filled or Unfilled : ")
+choice=patterns.build_triangle(f)
+c=input("Enter Choice \nRectangle or UpperTriangle or InvertedTriangle or LeftTriangle or RightTriangle or Rhombus : ")
+inputpattern=patterns.typeofpattern(c)
